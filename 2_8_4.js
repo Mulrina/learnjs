@@ -1,5 +1,15 @@
 // Исправьте сложение
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max)
+}
+
+function prompt(massage, value) {
+  let result = `${getRandomInt(9)}`
+  console.log(massage, result) 
+  return result
+} 
+
 function main() {
   // надо перевести строки в числа с помощью оператора +
   let a = prompt("Первое число?", 1) 

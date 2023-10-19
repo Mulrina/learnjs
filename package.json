@@ -1,0 +1,16 @@
+{
+  "name": "learnjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.jsx",
+  "scripts": {
+    "test": "jest --config jest-config.mjs",
+    "test:w": "jest --config jest-config.mjs --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.6",
+    "jest": "^29.7.0"
+  }
+}

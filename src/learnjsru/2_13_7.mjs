@@ -12,7 +12,7 @@ function getPrimeNumbers(n) {
 
       result += i + ','
     }
-  return result
+    return result
 }
 
 it('Вывести простые числа для n = 10', () => {

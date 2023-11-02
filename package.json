@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.jsx",
   "scripts": {
-    "test": "jest --config jest-config.mjs",
-    "test:w": "jest --config jest-config.mjs --watch"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jest-config.mjs",
+    "test:w": "NODE_OPTIONS=--experimental-vm-modules jest --config jest-config.mjs --watch"
   },
   "author": "",
   "license": "ISC",

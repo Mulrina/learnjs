@@ -1,4 +1,4 @@
-import { ESPRESSO, DOUBLE_ESPRESSO, SMALL_LATTE } from './coffee-types.mjs'
+import { ESPRESSO, DOUBLE_ESPRESSO, SMALL_LATTE, CAPPUCCINO } from './coffee-types.mjs'
 
 export const espresso = {
   name: ESPRESSO,
@@ -22,5 +22,14 @@ export const smallLatte = {
   water: 20,
   milk: 180,
   volume: 200,
+  temperature: 65.5
+}
+
+export const cappuccino = {
+  name: CAPPUCCINO,
+  beans: 17.5,
+  water: 40,
+  milk: 210,
+  volume: 250,
   temperature: 65.5
 }

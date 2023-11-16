@@ -141,7 +141,7 @@ describe('Coffee machine', () => {
   })
 
   it('Throws error when there are not enough milk', () => {
-    const beans = createRawBeans(1000)
+    const beans = createRawBeans(1500)
     const water = createWater(2000)
     const milk = createMilk(1)
 
@@ -152,4 +152,18 @@ describe('Coffee machine', () => {
     coffeeMachine.selectDrink(SMALL_LATTE)
     expect(() => { coffeeMachine.start() }).toThrow('Not enough milk')
   })
+
+  it('Thows error when there are not enough milk and beans', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2000)
+    const milk = createMilk(1)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(SMALL_LATTE)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough milk and beans')
+  })
+
 })

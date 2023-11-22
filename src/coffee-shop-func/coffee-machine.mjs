@@ -1,11 +1,16 @@
-import { espresso, doubleEspresso, smallLatte, cappuccino } from './recipes.mjs'
+import { espresso, doubleEspresso, latte_200, latte_250, latte_350, cappuccino_200, cappuccino_250, cappuccino_350, flat_white } from './recipes.mjs'
 
 export function createCoffeeMachine(
   recipes = [
     espresso,
     doubleEspresso,
-    smallLatte,
-    cappuccino
+    latte_200,
+    latte_250,
+    latte_350,
+    cappuccino_200,
+    cappuccino_250,
+    cappuccino_350,
+    flat_white,
   ]
 ) {
   return {
@@ -37,9 +42,22 @@ export function createCoffeeMachine(
        }
 
       if (recipe.beans) {
+        if (this.beans.weight < recipe.beans && this.water.volume < recipe.water && this.milk.volume < recipe.milk) {
+          throw Error('Not enough beans, water and milk')
+        }
+
+        if (this.beans.weight < recipe.beans && this.milk.volume < recipe.milk) {
+          throw Error('Not enough beans and milk')
+        }
+
+        if (this.beans.weight < recipe.beans && this.water.volume < recipe.water) {
+          throw Error('Not enough beans and water')
+        }
+
         if (this.beans.weight < recipe.beans) { 
           throw Error('Not enough beans')
         }
+
         this.beans.weight -= recipe.beans
       }
       if (recipe.water) {

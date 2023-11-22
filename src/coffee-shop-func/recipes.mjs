@@ -22,15 +22,15 @@ export const latte_200 = {
   water: 20,
   milk: 180,
   volume: 200,
-  temperature: 65.5
+  temperature: 65.5 
 }
 
 export const latte_250 = {
   name: LATTE_250,
   beans: 8.75,
   water: 20,
-  milk: 220,
-  volume: 200,
+  milk: 230,
+  volume: 250,
   temperature: 65.5
 }
 
@@ -43,11 +43,38 @@ export const latte_350 = {
   temperature: 65.5
 }
 
+export const cappuccino_200 = {
+  name: CAPPUCCINO_200,
+  beans: 8.75,
+  water: 20,
+  milk: 180,
+  volume: 200,
+  temperature: 65.5 
+}
+
 export const cappuccino_250 = {
   name: CAPPUCCINO_250,
   beans: 17.5,
   water: 40,
   milk: 210,
   volume: 250,
+  temperature: 65.5
+}
+
+export const cappuccino_350 = {
+  name: CAPPUCCINO_350,
+  beans: 17.5,
+  water: 40,
+  milk: 310,
+  volume: 350,
+  temperature: 65.5
+}
+
+export const flat_white = {
+  name: FLAT_WHITE,
+  beans: 17.5,
+  water: 40,
+  milk: 160,
+  volume: 200,
   temperature: 65.5
 }

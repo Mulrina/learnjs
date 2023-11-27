@@ -42,10 +42,6 @@ export function createCoffeeMachine(
        }
 
       if (recipe.beans) {
-        if (this.beans.weight < recipe.beans && this.water.volume < recipe.water && this.milk.volume < recipe.milk) {
-          throw Error('Not enough beans, water and milk')
-        }
-
         if (this.beans.weight < recipe.beans && this.milk.volume < recipe.milk) {
           throw Error('Not enough beans and milk')
         }

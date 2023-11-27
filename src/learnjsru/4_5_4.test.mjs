@@ -1,4 +1,4 @@
-function decrease(arr, a, b) {
+function decrease(arr) {
   return arr 
     .sort((a, b) => b - a)
 }

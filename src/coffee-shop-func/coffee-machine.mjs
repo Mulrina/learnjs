@@ -47,6 +47,10 @@ export function createCoffeeMachine(
        }
 
       if (recipe.beans) {
+        if (this.beans.weight < recipe.beans && this.creamMilk < recipe.creamMilk) {
+          throw Error('Not enough beans and cream milk')
+        }
+
         if (this.beans.weight < recipe.beans && this.milk.volume < recipe.milk) {
           throw Error('Not enough beans and milk')
         }
@@ -63,6 +67,14 @@ export function createCoffeeMachine(
       }
 
       if (recipe.water) {
+        if (this.water.volume < recipe.water && this.creamMilk < recipe.creamMilk) {
+          throw Error('Not enough water and cream milk')
+        }
+
+        if (this.water.volume < recipe.water && this.milk.volume < recipe.milk) {
+          throw Error('Not enough water and milk')
+        }
+
         if (this.water.volume < recipe.water) {
           throw Error('Not enough water')
         }
@@ -71,6 +83,14 @@ export function createCoffeeMachine(
       }
 
       if (recipe.milk) {
+        if (this.milk.volume < recipe.milk && this.beans.weight < recipe.beans) {
+          throw Error('Not enough beans and milk')
+        }
+
+        if (this.milk.volume < recipe.milk && this.water.volume < recipe.water) {
+          throw Error('Not enough water and milk')
+        }
+
         if (this.milk.volume < recipe.milk) {
           throw Error('Not enough milk')
         }
@@ -79,6 +99,10 @@ export function createCoffeeMachine(
       }
 
       if (recipe.creamMilk) {
+        if (this.creamMilk.volume < recipe.creamMilk && this.water < recipe.water) {
+          throw Error('Not enough water and cream milk')
+        }
+
         if (this.creamMilk.volume < recipe.creamMilk) {
           throw Error('Not enough cream milk')
         }

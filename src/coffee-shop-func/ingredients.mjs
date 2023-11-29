@@ -21,7 +21,7 @@ export function createMilk(volume) {
 
 export function createCreamMilk(volume) {
   return {
-    tupe: 'CREAM_MILK', 
+    type: 'CREAM_MILK', 
     volume: volume
   }
 }

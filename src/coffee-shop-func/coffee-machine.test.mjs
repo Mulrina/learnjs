@@ -400,6 +400,84 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
   })
 
+  it('Throws error when there are not enough beans and water', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(ESPRESSO)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  })
+
+  it('Throws error when there are not enough beans', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2000)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(DOUBLE_ESPRESSO)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  })
+
+  it('Throws error when there are not enough water', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(DOUBLE_ESPRESSO)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
+  })
+
+  it('Throws error when there are not enough beans and water', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(DOUBLE_ESPRESSO)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  })
+
+  it('Throws error when there are not enough beans', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2000)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(LATTE_200)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  })
+
+  it('Throws error when there are not enough water', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(LATTE_200)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
+  })
+
   it('Throws error when there are not enough milk', () => {
     const beans = createRawBeans(1500)
     const water = createWater(2000)
@@ -413,7 +491,20 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough milk')
   })
 
-  it('Thows error when there are not enough beans', () => {
+  it('Thows error when there are not enough beans and water', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(LATTE_200)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  })
+
+   it('Thows error when there are not enough beans and milk', () => {
     const beans = createRawBeans(1)
     const water = createWater(2000)
     const milk = createMilk(1)
@@ -426,9 +517,9 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
   })
 
-   it('Thows error when there are not enough milk and beans', () => {
-    const beans = createRawBeans(1)
-    const water = createWater(2000)
+   it('Thows error when there are not enough water and milk', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
     const milk = createMilk(1)
 
     const coffeeMachine = createCoffeeMachine()
@@ -436,9 +527,35 @@ describe('Coffee machine', () => {
     coffeeMachine.addWater(water)
     coffeeMachine.addMilk(milk)
     coffeeMachine.selectDrink(LATTE_200)
-    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water and milk')
   })
  
+  it('Throws error when there are not enough beans', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2000)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(LATTE_250)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  })
+
+  it('Throws error when there are not enough water', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(LATTE_250)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
+  })
+
   it('Throws error when there are not enough milk', () => {
     const beans = createRawBeans(1500)
     const water = createWater(2000)
@@ -452,7 +569,20 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough milk')
   })
 
-  it('Thows error when there are not enough beans', () => {
+  it('Thows error when there are not enough beans and water', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(LATTE_250)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  })
+
+   it('Thows error when there are not enough beans and milk', () => {
     const beans = createRawBeans(1)
     const water = createWater(2000)
     const milk = createMilk(1)
@@ -465,9 +595,9 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
   })
 
-   it('Thows error when there are not enough milk and beans', () => {
-    const beans = createRawBeans(1)
-    const water = createWater(2000)
+   it('Thows error when there are not enough water and milk', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
     const milk = createMilk(1)
 
     const coffeeMachine = createCoffeeMachine()
@@ -475,7 +605,33 @@ describe('Coffee machine', () => {
     coffeeMachine.addWater(water)
     coffeeMachine.addMilk(milk)
     coffeeMachine.selectDrink(LATTE_250)
-    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water and milk')
+  })
+  
+  it('Throws error when there are not enough beans', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2000)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(LATTE_350)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  })
+
+  it('Throws error when there are not enough water', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(LATTE_350)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
   })
 
   it('Throws error when there are not enough milk', () => {
@@ -491,7 +647,20 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough milk')
   })
 
-  it('Thows error when there are not enough beans', () => {
+  it('Thows error when there are not enough beans and water', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(LATTE_350)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  })
+
+   it('Thows error when there are not enough beans and milk', () => {
     const beans = createRawBeans(1)
     const water = createWater(2000)
     const milk = createMilk(1)
@@ -504,9 +673,9 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
   })
 
-   it('Thows error when there are not enough milk and beans', () => {
-    const beans = createRawBeans(1)
-    const water = createWater(2000)
+   it('Thows error when there are not enough water and milk', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
     const milk = createMilk(1)
 
     const coffeeMachine = createCoffeeMachine()
@@ -514,7 +683,33 @@ describe('Coffee machine', () => {
     coffeeMachine.addWater(water)
     coffeeMachine.addMilk(milk)
     coffeeMachine.selectDrink(LATTE_350)
-    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water and milk')
+  })
+  
+  it('Throws error when there are not enough beans', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2000)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(CAPPUCCINO_200)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  })
+
+  it('Throws error when there are not enough water', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(CAPPUCCINO_200)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
   })
 
   it('Throws error when there are not enough milk', () => {
@@ -530,7 +725,20 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough milk')
   })
 
-  it('Thows error when there are not enough beans', () => {
+  it('Thows error when there are not enough beans and water', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(CAPPUCCINO_200)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  })
+
+   it('Thows error when there are not enough beans and milk', () => {
     const beans = createRawBeans(1)
     const water = createWater(2000)
     const milk = createMilk(1)
@@ -543,9 +751,9 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
   })
 
-   it('Thows error when there are not enough milk and beans', () => {
-    const beans = createRawBeans(1)
-    const water = createWater(2000)
+   it('Thows error when there are not enough water and milk', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
     const milk = createMilk(1)
 
     const coffeeMachine = createCoffeeMachine()
@@ -553,7 +761,33 @@ describe('Coffee machine', () => {
     coffeeMachine.addWater(water)
     coffeeMachine.addMilk(milk)
     coffeeMachine.selectDrink(CAPPUCCINO_200)
-    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water and milk')
+  })
+
+  it('Throws error when there are not enough beans', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2000)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(CAPPUCCINO_250)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  })
+
+  it('Throws error when there are not enough water', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(CAPPUCCINO_250)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
   })
 
   it('Throws error when there are not enough milk', () => {
@@ -569,7 +803,20 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough milk')
   })
 
-  it('Thows error when there are not enough beans', () => {
+  it('Thows error when there are not enough beans and water', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(CAPPUCCINO_250)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  })
+
+   it('Thows error when there are not enough beans and milk', () => {
     const beans = createRawBeans(1)
     const water = createWater(2000)
     const milk = createMilk(1)
@@ -582,9 +829,9 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
   })
 
-   it('Thows error when there are not enough milk and beans', () => {
-    const beans = createRawBeans(1)
-    const water = createWater(2000)
+   it('Thows error when there are not enough water and milk', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
     const milk = createMilk(1)
 
     const coffeeMachine = createCoffeeMachine()
@@ -592,7 +839,33 @@ describe('Coffee machine', () => {
     coffeeMachine.addWater(water)
     coffeeMachine.addMilk(milk)
     coffeeMachine.selectDrink(CAPPUCCINO_250)
-    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water and milk')
+  })
+
+  it('Throws error when there are not enough beans', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2000)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(CAPPUCCINO_350)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  })
+
+  it('Throws error when there are not enough water', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(CAPPUCCINO_350)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
   })
 
   it('Throws error when there are not enough milk', () => {
@@ -608,7 +881,20 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough milk')
   })
 
-  it('Thows error when there are not enough beans', () => {
+  it('Thows error when there are not enough beans and water', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(CAPPUCCINO_350)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  })
+
+   it('Thows error when there are not enough beans and milk', () => {
     const beans = createRawBeans(1)
     const water = createWater(2000)
     const milk = createMilk(1)
@@ -621,9 +907,9 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
   })
 
-   it('Thows error when there are not enough milk and beans', () => {
-    const beans = createRawBeans(1)
-    const water = createWater(2000)
+   it('Thows error when there are not enough water and milk', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
     const milk = createMilk(1)
 
     const coffeeMachine = createCoffeeMachine()
@@ -631,7 +917,33 @@ describe('Coffee machine', () => {
     coffeeMachine.addWater(water)
     coffeeMachine.addMilk(milk)
     coffeeMachine.selectDrink(CAPPUCCINO_350)
-    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water and milk')
+  })
+
+  it('Thows error when there are not enough beans', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2000)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(FLAT_WHITE)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  })
+
+  it('Thows error when there are not enough water', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(FLAT_WHITE)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
   })
 
   it('Throws error when there are not enough milk', () => {
@@ -647,7 +959,20 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough milk')
   })
 
-  it('Thows error when there are not enough beans', () => {
+   it('Thows error when there are not enough beans and water', () => {
+    const beans = createRawBeans(1)
+    const water = createWater(2)
+    const milk = createMilk(1000)
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addMilk(milk)
+    coffeeMachine.selectDrink(FLAT_WHITE)
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  })
+
+   it('Thows error when there are not enough beans and milk', () => {
     const beans = createRawBeans(1)
     const water = createWater(2000)
     const milk = createMilk(1)
@@ -660,9 +985,9 @@ describe('Coffee machine', () => {
     expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
   })
 
-   it('Thows error when there are not enough milk and beans', () => {
-    const beans = createRawBeans(1)
-    const water = createWater(2000)
+   it('Thows error when there are not enough water and milk', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2)
     const milk = createMilk(1)
 
     const coffeeMachine = createCoffeeMachine()
@@ -670,6 +995,227 @@ describe('Coffee machine', () => {
     coffeeMachine.addWater(water)
     coffeeMachine.addMilk(milk)
     coffeeMachine.selectDrink(FLAT_WHITE)
-    expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and milk')
+    expect(() => { coffeeMachine.start() }).toThrow('Not enough water and milk')
   })
+  
+  // it('Thows error when there are not enough beans', () => {
+  //   const beans = createRawBeans(1)
+  //   const water = createWater(2000)
+  //   const creamMilk = createCreamMilk(1000)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_200)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  // })
+
+  //  it('Thows error when there are not enough water', () => {
+  //   const beans = createRawBeans(1500)
+  //   const water = createWater(2)
+  //   const creamMilk = createCreamMilk(1000)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_200)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
+  // })
+
+  // it('Throws error when there are not enough cream milk', () => {
+  //   const beans = createRawBeans(1500)
+  //   const water = createWater(2000)
+  //   const creamMilk = createCreamMilk(1)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_200)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough cream milk')
+  // })
+
+  // it('Thows error when there are not enough beans and water', () => {
+  //   const beans = createRawBeans(1)
+  //   const water = createWater(2)
+  //   const creamMilk = createCreamMilk(1000)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_200)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  // })
+
+  // it('Thows error when there are not enough beans and cream milk', () => {
+  //   const beans = createRawBeans(1)
+  //   const water = createWater(2000)
+  //   const creamMilk = createCreamMilk(1)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_200)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and cream milk')
+  // })
+
+  // it('Thows error when there are not enough beans', () => {
+  //   const beans = createRawBeans(1)
+  //   const water = createWater(2000)
+  //   const creamMilk = createCreamMilk(1000)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_250)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  // })
+
+  //  it('Thows error when there are not enough water', () => {
+  //   const beans = createRawBeans(1500)
+  //   const water = createWater(2)
+  //   const creamMilk = createCreamMilk(1000)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_250)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
+  // })
+
+  // it('Throws error when there are not enough cream milk', () => {
+  //   const beans = createRawBeans(1500)
+  //   const water = createWater(2000)
+  //   const creamMilk = createCreamMilk(1)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_250)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough cream milk')
+  // })
+
+  // it('Thows error when there are not enough beans and water', () => {
+  //   const beans = createRawBeans(1)
+  //   const water = createWater(2)
+  //   const creamMilk = createCreamMilk(1000)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_250)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  // })
+
+  //  it('Thows error when there are not enough beans and cream milk', () => {
+  //   const beans = createRawBeans(1)
+  //   const water = createWater(2000)
+  //   const creamMilk = createCreamMilk(1)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_250)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and cream milk')
+  // })
+
+  // it('Throws error when there are not enough water and cream milk', () => {
+  //   const beans = createRawBeans(1500)
+  //   const water = createWater(2)
+  //   const creamMilk = createCreamMilk(1)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_250)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough water and cream milk')
+  // })
+
+  // it('Thows error when there are not enough beans', () => {
+  //   const beans = createRawBeans(1)
+  //   const water = createWater(2000)
+  //   const creamMilk = createCreamMilk(1000)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_350)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough beans')
+  // })
+
+  //  it('Thows error when there are not enough water', () => {
+  //   const beans = createRawBeans(1500)
+  //   const water = createWater(2)
+  //   const creamMilk = createCreamMilk(1000)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_350)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough water')
+  // })
+
+  // it('Throws error when there are not enough cream milk', () => {
+  //   const beans = createRawBeans(1500)
+  //   const water = createWater(2000)
+  //   const creamMilk = createCreamMilk(1)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_350)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough cream milk')
+  // })
+
+  // it('Thows error when there are not enough beans and water', () => {
+  //   const beans = createRawBeans(1)
+  //   const water = createWater(2)
+  //   const creamMilk = createCreamMilk(1000)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_350)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and water')
+  // })
+
+  //  it('Thows error when there are not enough beans and cream milk', () => {
+  //   const beans = createRawBeans(1)
+  //   const water = createWater(2000)
+  //   const creamMilk = createCreamMilk(1)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_350)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough beans and cream milk')
+  // })
+
+  // it('Throws error when there are not enough water and cream milk', () => {
+  //   const beans = createRawBeans(1500)
+  //   const water = createWater(2)
+  //   const creamMilk = createCreamMilk(1)
+
+  //   const coffeeMachine = createCoffeeMachine()
+  //   coffeeMachine.addBeans(beans)
+  //   coffeeMachine.addWater(water)
+  //   coffeeMachine.addCreamMilk(creamMilk)
+  //   coffeeMachine.selectDrink(CLASSIC_RAF_350)
+  //   expect(() => { coffeeMachine.start() }).toThrow('Not enough water and cream milk')
+  // })
 })

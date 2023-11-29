@@ -1,19 +1,27 @@
 import { createCoffeeMachine } from './coffee-machine.mjs'
-import { ESPRESSO, DOUBLE_ESPRESSO, LATTE_200, LATTE_250, LATTE_350, CAPPUCCINO_200, CAPPUCCINO_250, CAPPUCCINO_350, FLAT_WHITE} from './coffee-types.mjs'
-import { createRawBeans, createWater, createMilk } from './ingredients.mjs'
-import { espresso, latte_200, cappuccino_200, flat_white, latte_250 } from './recipes.mjs'
+import { ESPRESSO, DOUBLE_ESPRESSO, LATTE_200, LATTE_250, LATTE_350, CAPPUCCINO_200, CAPPUCCINO_250, CAPPUCCINO_350, FLAT_WHITE, CLASSIC_RAF_200, CLASSIC_RAF_250, CLASSIC_RAF_350 } from './coffee-types.mjs'
+import { createRawBeans, createWater, createMilk, createCreamMilk } from './ingredients.mjs'
+import { espresso, doubleEspresso, latte_200, latte_250, latte_350, cappuccino_200, cappuccino_250, cappuccino_350, flat_white, classic_raf_200, classic_raf_250, classic_raf_350,  } from './recipes.mjs'
 
 describe('Coffee machine', () => {
   it('Displayies drinks', () => {
     const coffeeMachine = createCoffeeMachine([
       espresso,
+      doubleEspresso,
       latte_200, 
+      latte_250,
+      latte_350,
       cappuccino_200, 
-      flat_white
+      cappuccino_250,
+      cappuccino_350,
+      flat_white,
+      classic_raf_200,
+      classic_raf_250,
+      classic_raf_350,
     ])
     expect(coffeeMachine.drinks).toBeDefined()
-    expect(coffeeMachine.drinks.length).toBe(4)
-    expect(coffeeMachine.drinks).toEqual([ESPRESSO, LATTE_200, CAPPUCCINO_200, FLAT_WHITE])
+    expect(coffeeMachine.drinks.length).toBe(12)
+    expect(coffeeMachine.drinks).toEqual([ESPRESSO, DOUBLE_ESPRESSO, LATTE_200, LATTE_250, LATTE_350, CAPPUCCINO_200, CAPPUCCINO_250, CAPPUCCINO_350, FLAT_WHITE, CLASSIC_RAF_200, CLASSIC_RAF_250, CLASSIC_RAF_350])
   })
 
   it('Espresso', () => {
@@ -217,6 +225,75 @@ describe('Coffee machine', () => {
     expect(coffeeMachine.milk.volume).toBe(1000-160)
   })
 
+  it('Classic raf 200', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2000)
+    const creamMilk = createCreamMilk(1000)
+    const drink = CLASSIC_RAF_200
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addCreamMilk(creamMilk)
+    coffeeMachine.selectDrink(drink)
+    const classic_raf_200 = coffeeMachine.start()
+
+    expect(classic_raf_200).toBeDefined()
+    expect(classic_raf_200.type).toBe(CLASSIC_RAF_200)
+    expect(coffeeMachine.drink).toBe(CLASSIC_RAF_200)
+    expect(classic_raf_200.volume).toBe(200)
+    expect(classic_raf_200.temperature).toBe(65.5)
+    expect(coffeeMachine.water.volume).toBe(2000-20)
+    expect(coffeeMachine.beans.weight).toBe(1500-8.75)  
+    expect(coffeeMachine.creamMilk.volume).toBe(1000-180)
+  })
+
+  it('Classic raf 250', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2000)
+    const creamMilk = createCreamMilk(1000)
+    const drink = CLASSIC_RAF_250
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addCreamMilk(creamMilk)
+    coffeeMachine.selectDrink(drink)
+    const classic_raf_250 = coffeeMachine.start()
+
+    expect(classic_raf_250).toBeDefined()
+    expect(classic_raf_250.type).toBe(CLASSIC_RAF_250)
+    expect(coffeeMachine.drink).toBe(CLASSIC_RAF_250)
+    expect(classic_raf_250.volume).toBe(250)
+    expect(classic_raf_250.temperature).toBe(65.5)
+    expect(coffeeMachine.water.volume).toBe(2000-20)
+    expect(coffeeMachine.beans.weight).toBe(1500-8.75)  
+    expect(coffeeMachine.creamMilk.volume).toBe(1000-230)
+  })
+
+  it('Classic raf 350', () => {
+    const beans = createRawBeans(1500)
+    const water = createWater(2000)
+    const creamMilk = createCreamMilk(1000)
+    const drink = CLASSIC_RAF_350
+
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.addBeans(beans)
+    coffeeMachine.addWater(water)
+    coffeeMachine.addCreamMilk(creamMilk)
+    coffeeMachine.selectDrink(drink)
+    const classic_raf_350 = coffeeMachine.start()
+
+    expect(classic_raf_350).toBeDefined()
+    expect(classic_raf_350.type).toBe(CLASSIC_RAF_350)
+    expect(coffeeMachine.drink).toBe(CLASSIC_RAF_350)
+    expect(classic_raf_350.volume).toBe(350)
+    expect(classic_raf_350.temperature).toBe(65.5)
+    expect(coffeeMachine.water.volume).toBe(2000-40)
+    expect(coffeeMachine.beans.weight).toBe(1500-17.5)
+    expect(coffeeMachine.creamMilk.volume).toBe(1000-310)
+  })
+
   it('Throws error when select drink not included in recipes', () => {
     const coffeeMachine = createCoffeeMachine([])
 
@@ -228,6 +305,72 @@ describe('Coffee machine', () => {
   it('Throws error when there are no ingredients', () => {
     const coffeeMachine = createCoffeeMachine()
     coffeeMachine.selectDrink(ESPRESSO)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  })
+
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(DOUBLE_ESPRESSO)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  })
+  
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(LATTE_200)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  })
+  
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(LATTE_250)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  })
+
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(LATTE_350)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  }) 
+
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(CAPPUCCINO_200)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  })
+
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(CAPPUCCINO_250)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  })
+
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(CAPPUCCINO_350)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  })
+
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(FLAT_WHITE)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  })
+  
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(CLASSIC_RAF_200)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  })
+
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(CLASSIC_RAF_250)
+    expect(() => { coffeeMachine.start() }).toThrow()
+  })
+
+  it('Throws error when there are no ingredients', () => {
+    const coffeeMachine = createCoffeeMachine()
+    coffeeMachine.selectDrink(CLASSIC_RAF_350)
     expect(() => { coffeeMachine.start() }).toThrow()
   })
 

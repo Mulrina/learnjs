@@ -18,3 +18,10 @@ export function createMilk(volume) {
     volume: volume 
   }
 }
+
+export function createCreamMilk(volume) {
+  return {
+    tupe: 'CREAM_MILK', 
+    volume: volume
+  }
+}

@@ -1,7 +1,7 @@
 import { createCoffeeMachine } from './coffee-machine.mjs'
-import { ESPRESSO, DOUBLE_ESPRESSO, LATTE_200, LATTE_250, LATTE_350, CAPPUCCINO_200, CAPPUCCINO_250, CAPPUCCINO_350, FLAT_WHITE, CLASSIC_RAF_200, CLASSIC_RAF_250, CLASSIC_RAF_350 } from './coffee-types.mjs'
+import { ESPRESSO, DOUBLE_ESPRESSO, LATTE_200, CAPPUCCINO_250, FLAT_WHITE, CLASSIC_RAF_200 } from './coffee-types.mjs'
 import { createRawBeans, createWater, createMilk, createCreamMilk } from './ingredients.mjs'
-import { espresso, doubleEspresso, latte_200, latte_250, latte_350, cappuccino_200, cappuccino_250, cappuccino_350, flat_white, classic_raf_200, classic_raf_250, classic_raf_350,  } from './recipes.mjs'
+import { espresso, doubleEspresso, latte_200, cappuccino_250, flat_white, classic_raf_200, } from './recipes.mjs'
 
 describe('Coffee machine', () => {
   it('Displayies drinks', () => {

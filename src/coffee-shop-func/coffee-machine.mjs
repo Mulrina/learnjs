@@ -20,18 +20,54 @@ export function createCoffeeMachine(
     get drinks() {
       return this.recipes.map(recipe => recipe.name)
     },
+
+    // delete
+    get beans() {
+      return this.findIngredientByType('RAW_BEANS')
+    },
+    get water() {
+      return this.findIngredientByType('WATER')
+    },
+    get milk() {
+      return this.findIngredientByType('MILK')
+    },
+    get creamMilk() {
+      return this.findIngredientByType('CREAM_MILK')
+    },
+    // delete
+
+    getIngredient: function(type) {
+      return this.findIngredientByType(type)
+    },
+    findIngredientByType: function(type) {
+      return this.ingredients.find(element => element.type === type)
+    },
+
     recipes: recipes,
+    ingredients: [],
+
+    // delete
     addBeans: function(beans) {
-      this.beans = beans
+      this.addIngredient(beans)
     },
     addWater: function(water) {
-      this.water = water
+      this.addIngredient(water)
     },
     addMilk: function(milk) {
-      this.milk = milk
+      this.addIngredient(milk)
     },
     addCreamMilk: function(creamMilk) {
-      this.creamMilk = creamMilk
+      this.addIngredient(creamMilk)
+    },
+    // delete
+
+    addIngredient: function(ingredient) {
+      const coffeMachineIngredient = this.findIngredientByType(ingredient.type) 
+      if (!coffeMachineIngredient) {
+        this.ingredients.push(ingredient)
+      } else {
+        coffeMachineIngredient.value += ingredient.value
+      }
     },
     selectDrink: function(drink) {
       if (!this.drinks.includes(drink)) {
@@ -44,70 +80,12 @@ export function createCoffeeMachine(
 
       if (!recipe) {
         throw Error('Recipe not found')
-       }
-
-      if (recipe.beans) {
-        if (this.beans.weight < recipe.beans && this.creamMilk < recipe.creamMilk) {
-          throw Error('Not enough beans and cream milk')
-        }
-
-        if (this.beans.weight < recipe.beans && this.milk.volume < recipe.milk) {
-          throw Error('Not enough beans and milk')
-        }
-
-        if (this.beans.weight < recipe.beans && this.water.volume < recipe.water) {
-          throw Error('Not enough beans and water')
-        }
-
-        if (this.beans.weight < recipe.beans) { 
-          throw Error('Not enough beans')
-        }
-
-        this.beans.weight -= recipe.beans
       }
 
-      if (recipe.water) {
-        if (this.water.volume < recipe.water && this.creamMilk < recipe.creamMilk) {
-          throw Error('Not enough water and cream milk')
-        }
-
-        if (this.water.volume < recipe.water && this.milk.volume < recipe.milk) {
-          throw Error('Not enough water and milk')
-        }
-
-        if (this.water.volume < recipe.water) {
-          throw Error('Not enough water')
-        }
-
-        this.water.volume -= recipe.water
-      }
-
-      if (recipe.milk) {
-        if (this.milk.volume < recipe.milk && this.beans.weight < recipe.beans) {
-          throw Error('Not enough beans and milk')
-        }
-
-        if (this.milk.volume < recipe.milk && this.water.volume < recipe.water) {
-          throw Error('Not enough water and milk')
-        }
-
-        if (this.milk.volume < recipe.milk) {
-          throw Error('Not enough milk')
-        }
-
-        this.milk.volume -= recipe.milk
-      }
-
-      if (recipe.creamMilk) {
-        if (this.creamMilk.volume < recipe.creamMilk && this.water < recipe.water) {
-          throw Error('Not enough water and cream milk')
-        }
-
-        if (this.creamMilk.volume < recipe.creamMilk) {
-          throw Error('Not enough cream milk')
-        }
-
-        this.creamMilk.volume -= recipe.creamMilk
+      for (const ingredient of recipe.ingredients) {
+        const coffeMachineIngredient = this.ingredients.find(element => element.type === ingredient.type)
+        if (!coffeMachineIngredient || coffeMachineIngredient.value < ingredient.value) { throw Error(`Not enough ${ingredient.name}`) } 
+        coffeMachineIngredient.value -= ingredient.value
       }
 
       return {

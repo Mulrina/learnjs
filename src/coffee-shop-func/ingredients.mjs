@@ -1,27 +1,35 @@
 export function createRawBeans(weight) {
   return {
     type: 'RAW_BEANS',
-    weight: weight
+    name: 'beans',
+    unit: 'kg',
+    value: weight
   }
 }
 
 export function createWater(volume) {
   return {
     type: 'WATER',
-    volume: volume 
+    name: 'water',
+    unit: 'ml',
+    value: volume 
   }
 }
 
 export function createMilk(volume) {
   return {
     type: 'MILK',
-    volume: volume 
+    name: 'milk',
+    unit: 'ml',
+    value: volume 
   }
 }
 
 export function createCreamMilk(volume) {
   return {
     type: 'CREAM_MILK', 
-    volume: volume
+    name: 'cream milk',
+    unit: 'ml',
+    value: volume
   }
 }

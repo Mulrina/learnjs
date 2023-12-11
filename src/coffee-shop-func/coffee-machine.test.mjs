@@ -9,19 +9,13 @@ describe('Coffee machine', () => {
       espresso,
       doubleEspresso,
       latte_200, 
-      latte_250,
-      latte_350,
-      cappuccino_200, 
       cappuccino_250,
-      cappuccino_350,
       flat_white,
       classic_raf_200,
-      classic_raf_250,
-      classic_raf_350,
     ])
     expect(coffeeMachine.drinks).toBeDefined()
-    expect(coffeeMachine.drinks.length).toBe(12)
-    expect(coffeeMachine.drinks).toEqual([ESPRESSO, DOUBLE_ESPRESSO, LATTE_200, LATTE_250, LATTE_350, CAPPUCCINO_200, CAPPUCCINO_250, CAPPUCCINO_350, FLAT_WHITE, CLASSIC_RAF_200, CLASSIC_RAF_250, CLASSIC_RAF_350])
+    expect(coffeeMachine.drinks.length).toBe(6)
+    expect(coffeeMachine.drinks).toEqual([ESPRESSO, DOUBLE_ESPRESSO, LATTE_200, CAPPUCCINO_250, FLAT_WHITE, CLASSIC_RAF_200])
   })
 
   it('Espresso', () => {
@@ -91,75 +85,6 @@ describe('Coffee machine', () => {
     expect(coffeeMachine.milk.value).toBe(1000-180)
   })
 
-  it('Latte 250', () => {
-    const beans = createRawBeans(1500)
-    const water = createWater(2000)
-    const milk = createMilk(1000)
-    const drink = LATTE_250
-
-    const coffeeMachine = createCoffeeMachine()
-    coffeeMachine.addBeans(beans)
-    coffeeMachine.addWater(water)
-    coffeeMachine.addMilk(milk)
-    coffeeMachine.selectDrink(drink)
-    const latte_250 = coffeeMachine.start()
-
-    expect(latte_250).toBeDefined()
-    expect(latte_250.type).toBe(LATTE_250)
-    expect(coffeeMachine.drink).toBe(LATTE_250)
-    expect(latte_250.volume).toBe(250)
-    expect(latte_250.temperature).toBe(65.5)
-    expect(coffeeMachine.water.value).toBe(2000-20)
-    expect(coffeeMachine.beans.value).toBe(1500-8.75)  
-    expect(coffeeMachine.milk.value).toBe(1000-230)
-  })
-
-  it('Latte 350', () => {
-    const beans = createRawBeans(1500)
-    const water = createWater(2000)
-    const drink = LATTE_350
-    const milk = createMilk(1000)
-
-    const coffeeMachine = createCoffeeMachine()
-    coffeeMachine.addBeans(beans)
-    coffeeMachine.addWater(water)
-    coffeeMachine.addMilk(milk)
-    coffeeMachine.selectDrink(drink)
-    const latte_350 = coffeeMachine.start()
-
-    expect(latte_350).toBeDefined()
-    expect(latte_350.type).toBe(LATTE_350)
-    expect(coffeeMachine.drink).toBe(LATTE_350)
-    expect(latte_350.volume).toBe(350)
-    expect(latte_350.temperature).toBe(65.5)
-    expect(coffeeMachine.water.value).toBe(2000-40)
-    expect(coffeeMachine.beans.value).toBe(1500-17.5)
-    expect(coffeeMachine.milk.value).toBe(1000-310)
-  })
-
-  it('Cappuccino 200', () => {
-    const beans = createRawBeans(1500)
-    const water = createWater(2000)
-    const milk = createMilk(1000)
-    const drink = CAPPUCCINO_200
-
-    const coffeeMachine = createCoffeeMachine()
-    coffeeMachine.addBeans(beans)
-    coffeeMachine.addWater(water)
-    coffeeMachine.addMilk(milk)
-    coffeeMachine.selectDrink(drink)
-    const cappuccino_200 = coffeeMachine.start()
-
-    expect(cappuccino_200).toBeDefined()
-    expect(cappuccino_200.type).toBe(CAPPUCCINO_200)
-    expect(coffeeMachine.drink).toBe(CAPPUCCINO_200)
-    expect(cappuccino_200.volume).toBe(200)
-    expect(cappuccino_200.temperature).toBe(65.5)
-    expect(coffeeMachine.water.value).toBe(2000-20)
-    expect(coffeeMachine.beans.value).toBe(1500-8.75)  
-    expect(coffeeMachine.milk.value).toBe(1000-180)
-  })
-
   it('Cappuccino 250', () => {
     const beans = createRawBeans(1500)
     const water = createWater(2000)
@@ -181,29 +106,6 @@ describe('Coffee machine', () => {
     expect(coffeeMachine.water.value).toBe(2000-40)
     expect(coffeeMachine.beans.value).toBe(1500-17.5)
     expect(coffeeMachine.milk.value).toBe(1000-210)
-  })
-
-  it('Cappuccino 350', () => {
-    const beans = createRawBeans(1500)
-    const water = createWater(2000)
-    const drink = CAPPUCCINO_350
-    const milk = createMilk(1000)
-
-    const coffeeMachine = createCoffeeMachine()
-    coffeeMachine.addBeans(beans)
-    coffeeMachine.addWater(water)
-    coffeeMachine.addMilk(milk)
-    coffeeMachine.selectDrink(drink)
-    const cappuccino_350 = coffeeMachine.start()
-
-    expect(cappuccino_350).toBeDefined()
-    expect(cappuccino_350.type).toBe(CAPPUCCINO_350)
-    expect(coffeeMachine.drink).toBe(CAPPUCCINO_350)
-    expect(cappuccino_350.volume).toBe(350)
-    expect(cappuccino_350.temperature).toBe(65.5)
-    expect(coffeeMachine.water.value).toBe(2000-40)
-    expect(coffeeMachine.beans.value).toBe(1500-17.5)
-    expect(coffeeMachine.milk.value).toBe(1000-310)
   })
 
   it('Flat White', () => {

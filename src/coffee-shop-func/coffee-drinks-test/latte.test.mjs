@@ -1,6 +1,6 @@
-import { createCoffeeMachine } from './coffee-machine.mjs'
-import { LATTE_200, LATTE_250, LATTE_350} from './coffee-types.mjs'
-import { createRawBeans, createWater, createMilk } from './ingredients.mjs'
+import { createCoffeeMachine } from '../coffee-machine.mjs'
+import { LATTE_200, LATTE_250, LATTE_350} from '../coffee-types.mjs'
+import { createRawBeans, createWater, createMilk } from '../ingredients.mjs'
 
   it('Latte 200', () => {
     const beans = createRawBeans(1500)
